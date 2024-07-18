@@ -1,22 +1,17 @@
 ---
-title: 'Code Blocks'
-description: 'Display inline code and code blocks'
-icon: 'code'
+title: "Conditional Logic"
+description: "Conditionaly show or hide content or pages based on user input"
 ---
 
 ## Basic
 
-### Inline Code
+### Inserting a Condition Block
 
-To denote a `word` or `phrase` as code, enclose it in backticks (`).
+To insert a condition block click the `+` button in the editor or click `/` by pressing `CMD+K` on macOS or `CTRL+K` on Windows and Linux.
 
-```
-To denote a `word` or `phrase` as code, enclose it in backticks (`).
-```
+### Working with Condition Blocks
 
-### Code Block
-
-Use [fenced code blocks](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks) by enclosing code in three backticks and follow the leading ticks with the programming language of your snippet to get syntax highlighting. Optionally, you can also write the name of your code after the programming language.
+When a condition block has been added to the editor you will be able to add conditions based on input fields to display or hide content or pages.
 
 ```java HelloWorld.java
 class HelloWorld {
@@ -26,12 +21,12 @@ class HelloWorld {
 }
 ```
 
-````md
-```java HelloWorld.java
-class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}
-```
-````
+### Condition Groups
+
+A condition group is a collection of conditions that are evaluated together.
+
+A group can be used to create more complex conditions. Ex
+
+If Full name is empty AND Age is greater than 18, then display the message "You are eligible to vote".
+
+Or even more advanced
