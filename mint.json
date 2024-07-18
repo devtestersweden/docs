@@ -1,24 +1,24 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "ProcessZen",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#059669",
+    "light": "#059669",
+    "dark": "#059669",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#059669",
+      "to": "#059669"
     }
   },
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:hi@processzen.com"
     }
   ],
   "topbarCtaButton": {
@@ -32,21 +32,7 @@
     }
   ],
   "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    }
+    
   ],
   "navigation": [
     {
@@ -75,7 +61,7 @@
       ]
     },
     {
-      "group": "Endpoint Examples",
+      "group": "Api Endpoints",
       "pages": [
         "api-reference/endpoint/get",
         "api-reference/endpoint/create",
@@ -84,8 +70,6 @@
     }
   ],
   "footerSocials": {
-    "x": "https://x.com/mintlify",
-    "github": "https://github.com/mintlify",
     "linkedin": "https://www.linkedin.com/company/mintsearch"
   }
 }
