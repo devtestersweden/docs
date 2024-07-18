@@ -18,12 +18,12 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@processzen.com"
+      "url": "mailto:hi@processzen.io"
     }
   ],
   "topbarCtaButton": {
     "name": "Dashboard",
-    "url": "https://processzen.com/dashboard/overview"
+    "url": "https://processzen.io/dashboard/overview"
   },
   "tabs": [
     {
@@ -70,6 +70,6 @@
     }
   ],
   "footerSocials": {
-    "linkedin": "https://www.linkedin.com/company/mintsearch"
+    "linkedin": "https://www.linkedin.com/company/processzen"
   }
 }
