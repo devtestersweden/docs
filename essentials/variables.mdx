@@ -1,62 +1,43 @@
 ---
 title: "Variables"
-description: "Ensure data integrity with input validation"
+description: "Use dynamic data within your workflows"
 icon: "brackets-curly"
 ---
 
-## Input Validation in ProcessZen
+## Variables in ProcessZen
 
-Input validation helps maintain data integrity by ensuring that user inputs meet specific criteria before proceeding in the workflow.
+Variables allow you to dynamically use and manipulate data within your workflows, making them more flexible and powerful.
 
-### Adding Validation Rules
+### Understanding Variables
 
-To add validation to an input field:
+In ProcessZen, variables are placeholders for data that can change depending on user input or other factors in your workflow. They enable you to create dynamic, responsive processes that adapt to different scenarios.
 
-- Click on the gear icon right next to the input field
+### Adding Variables
 
-### Types of Validation
+To add variables to your workflow:
 
-1. Type Validation
+1. Open the menu by pressing `/` on your keyboard
+2. Alternatively, you can type `{` to open the variable menu directly
 
-   - Email: Ensures the input is a valid email address
-   - Number: Allows only numeric input
-   - Date: Ensures the input is a valid date
+### Types of Variables
 
-2. Length Validation
+1. Input Field Variables
+   - These are created from user inputs in your forms
+   - Example: `{{user_name}}`, `{{email_address}}`, `{{phone_number}}`
 
-   - Min length: Sets the minimum number of characters required
-   - Max length: Sets the maximum number of characters allowed
+### Using Variables in Your Workflow
 
-3. Custom Validation
-   - Regex: Use custom regular expressions for specific validation needs
+You can use variables in various parts of your workflow:
 
-### Example Validation Rules
+1. Text Fields
 
-1. Email validation:
+   - Example: "Hello {{user_name}}, welcome to our service!"
 
-   - Type: Email
+2. Email Templates
 
-2. Phone number validation:
+   - Example: "Your order #{{order_id}} has been shipped to {{shipping_address}}."
 
-   - Type: Number
-   - Min length: 10
-   - Max length: 15
+3. Conditional Logic
+   - Example: If {{total_order}} > 1000, show VIP customer page
 
-3. Custom Regex validation:
-
-   Regex (Regular Expression) is a powerful tool for pattern matching and text manipulation. It allows you to define complex search patterns for validating or extracting information from strings.
-
-   Here are some common regex patterns:
-
-   ```
-   Email: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
-   Phone (US): '^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$'
-   Password (8+ chars, 1 uppercase, 1 lowercase, 1 number): '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$'
-   URL: '^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$'
-   ```
-
-   Creating regex patterns can be complex, but tools like the [Regex Generator](https://regex-generator.olafneumann.org/?sampleText=2020-03-12T13:34:56.123Z%20INFO%20%20%5Borg.example.Class%5D:%20This%20is%20a%20%23simple%20%23logline%20containing%20a%20'value'.&flags=i) can help you build and test regex patterns easily.
-
-   Use these patterns in the "Regex" type validation to enforce specific input formats in your workflows.
-
-By implementing proper validation, you can improve data quality and reduce errors in your workflows.
+By effectively using variables, you can create dynamic, personalized workflows that adapt to user inputs and changing conditions, enhancing the overall efficiency and user experience of your processes.
