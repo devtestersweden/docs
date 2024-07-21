@@ -1,0 +1,50 @@
+---
+title: "Input Validation"
+description: "Ensure data integrity with input validation"
+icon: "fa-cube"
+---
+
+## Input Validation in ProcessZen
+
+Input validation helps maintain data integrity by ensuring that user inputs meet specific criteria before proceeding in the workflow.
+
+### Adding Validation Rules
+
+To add validation to an input field:
+
+Click on the <Icon icon="gear" iconType="solid" /> right next to the input field
+
+### Types of Validation
+
+1. Type Validation
+
+   - Email: Ensures the input is a valid email address
+   - Number: Allows only numeric input
+   - Date: Ensures the input is a valid date
+
+2. Length Validation
+
+   - Min length: Sets the minimum number of characters required
+   - Max length: Sets the maximum number of characters allowed
+
+3. Custom Validation
+   - Regex: Use custom regular expressions for specific validation needs
+
+### Example Validation Rules
+
+1. Email validation:
+
+   - Type: Email
+
+2. Phone number validation:
+
+   - Type: Number
+   - Min length: 10
+   - Max length: 15
+
+3. Password strength:
+   - Min length: 8
+   - Custom regex: ^(?=._[A-Za-z])(?=._\d)[A-Za-z\d]{8,}$
+     (Requires at least one letter and one number)
+
+By implementing proper validation, you can improve data quality and reduce errors in your workflows.

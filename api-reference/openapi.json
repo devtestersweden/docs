@@ -1,54 +1,48 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
-    "license": {
-      "name": "MIT"
-    },
+    "title": "ProcessZen API",
+    "description": "API for managing workflow runs and templates in ProcessZen",
     "version": "1.0.0"
   },
   "servers": [
     {
-      "url": "http://processzen.com"
+      "url": "http://processzen.com/api"
     }
   ],
   "security": [
     {
-      "bearerAuth": []
+      "unkeyAuth": []
     }
   ],
   "paths": {
-    "/plants": {
-      "get": {
-        "description": "Returns all plants from the system that the user has access to",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of results to return",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
+    "/create-workflow-run": {
+      "post": {
+        "summary": "Create a new workflow run",
+        "description": "Creates a new workflow run based on a template and input fields",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateWorkflowRunRequest"
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
-            "description": "Plant response",
+            "description": "Successful response",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
-                  }
+                  "$ref": "#/components/schemas/WorkflowRun"
                 }
               }
             }
           },
           "400": {
-            "description": "Unexpected error",
+            "description": "Bad request",
             "content": {
               "application/json": {
                 "schema": {
@@ -56,35 +50,19 @@
                 }
               }
             }
-          }
-        }
-      },
-      "post": {
-        "description": "Creates a new plant in the store",
-        "requestBody": {
-          "description": "Plant to add to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
           },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "plant response",
+          "403": {
+            "description": "Unauthorized",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Plant"
+                  "$ref": "#/components/schemas/Error"
                 }
               }
             }
           },
-          "400": {
-            "description": "unexpected error",
+          "500": {
+            "description": "Internal server error",
             "content": {
               "application/json": {
                 "schema": {
@@ -96,28 +74,97 @@
         }
       }
     },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
+    "/get-workflow-runs": {
+      "get": {
+        "summary": "Get workflow runs",
+        "description": "Retrieves workflow runs for the authenticated organization",
         "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProcessedWorkflowRun"
+                  }
+                }
+              }
+            }
           },
           "400": {
-            "description": "unexpected error",
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-workflow-templates": {
+      "get": {
+        "summary": "Get workflow templates",
+        "description": "Retrieves workflow templates for the authenticated organization",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProcessedWorkflowTemplate"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
             "content": {
               "application/json": {
                 "schema": {
@@ -132,53 +179,105 @@
   },
   "components": {
     "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
+      "CreateWorkflowRunRequest": {
         "type": "object",
+        "required": ["workflow_template_id", "input_fields"],
         "properties": {
-          "name": {
-            "description": "The name of the plant",
+          "workflow_template_id": {
             "type": "string"
           },
-          "tag": {
-            "description": "Tag to specify the type",
+          "input_fields": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "WorkflowRun": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "organization_id": {
+            "type": "string"
+          },
+          "template_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "run_json": {
+            "type": "object"
+          },
+          "last_activity": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "ProcessedWorkflowRun": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "lastActivity": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "workflowName": {
+            "type": "string"
+          },
+          "currentStepAssignee": {
+            "type": "string"
+          },
+          "currentStepDueDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "currentStepName": {
+            "type": "string"
+          },
+          "status": {
             "type": "string"
           }
         }
       },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
+      "ProcessedWorkflowTemplate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
           },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
+          "name": {
+            "type": "string"
+          },
+          "inputFields": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "pageName": {
+                  "type": "string"
+                },
+                "inputId": {
+                  "type": "string"
+                },
+                "fieldName": {
+                  "type": "string"
+                }
               }
             }
           }
-        ]
+        }
       },
       "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
         "type": "object",
         "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
-          },
           "message": {
             "type": "string"
           }
@@ -186,9 +285,10 @@
       }
     },
     "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+      "unkeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "Authorization"
       }
     }
   }
