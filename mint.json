@@ -49,7 +49,7 @@
         "essentials/variables",
         "essentials/conditionblocks",
         "essentials/validation",
-        "essentials/test"
+        "essentials/validationrules"
       ]
     },
     {
