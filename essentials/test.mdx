@@ -42,4 +42,21 @@ To add validation to an input field:
    - Min length: 10
    - Max length: 15
 
+3. Custom Regex validation:
+
+   Regex (Regular Expression) is a powerful tool for pattern matching and text manipulation. It allows you to define complex search patterns for validating or extracting information from strings.
+
+   Here are some common regex patterns:
+
+   ```
+   Email: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+   Phone (US): '^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$'
+   Password (8+ chars, 1 uppercase, 1 lowercase, 1 number): '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$'
+   URL: '^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$'
+   ```
+
+   Creating regex patterns can be complex, but tools like the [Regex Generator](https://regex-generator.olafneumann.org/?sampleText=2020-03-12T13:34:56.123Z%20INFO%20%20%5Borg.example.Class%5D:%20This%20is%20a%20%23simple%20%23logline%20containing%20a%20'value'.&flags=i) can help you build and test regex patterns easily.
+
+   Use these patterns in the "Regex" type validation to enforce specific input formats in your workflows.
+
 By implementing proper validation, you can improve data quality and reduce errors in your workflows.
