@@ -12,7 +12,7 @@ Input validation helps maintain data integrity by ensuring that user inputs meet
 
 To add validation to an input field:
 
-- Click on the gear iconright next to the input field
+- Click on the gear icon right next to the input field
 
 ### Types of Validation
 
@@ -29,3 +29,22 @@ To add validation to an input field:
 
 3. Custom Validation
    - Regex: Use custom regular expressions for specific validation needs
+
+### Example Validation Rules
+
+1. Email validation:
+
+   - Type: Email
+
+2. Phone number validation:
+
+   - Type: Number
+   - Min length: 10
+   - Max length: 15
+
+3. Password strength:
+   - Min length: 8
+   - Custom regex: ^(?=._[A-Za-z])(?=._\d)[A-Za-z\d]{8,}$
+     (Requires at least one letter and one number)
+
+By implementing proper validation, you can improve data quality and reduce errors in your workflows.
