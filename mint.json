@@ -48,7 +48,8 @@
       "pages": [
         "essentials/variables",
         "essentials/conditionblocks",
-        "essentials/validation"
+        "essentials/validation",
+        "essentials/test"
       ]
     },
     {

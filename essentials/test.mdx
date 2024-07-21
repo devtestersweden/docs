@@ -1,0 +1,33 @@
+---
+title: "test"
+description: "Show or hide fields and pages based on conditions"
+icon: "code-branch"
+---
+
+## Conditional Logic in ProcessZen
+
+Conditional logic allows you to create dynamic workflows by showing or hiding fields and pages based on specific conditions.
+
+### Adding Condition Blocks
+
+To add a condition block:
+
+- Click the `+` icon in the editor (when in editing mode)
+- Press `/` on your keyboard (shortcut: CMD+/ on macOS, CTRL+/ on Windows/Linux)
+
+### Creating Condition Groups
+
+Condition groups let you combine multiple conditions using AND/OR logic. Here's how to create them:
+
+1. Add a condition block
+2. Select the field to evaluate
+3. Choose the condition type (e.g., equals, contains, greater than)
+4. Set the value to compare against
+5. Click "Add condition" to include more conditions in the group
+
+Example:
+
+- IF (Email contains "@company.com" AND Role equals "Manager")
+  THEN show "Manager Approval" page
+
+By using condition groups, you can create complex logic to tailor your workflow to specific scenarios.
