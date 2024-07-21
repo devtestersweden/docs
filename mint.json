@@ -46,10 +46,9 @@
     {
       "group": "Essentials",
       "pages": [
+        "essentials/variables",
         "essentials/conditionblocks",
-        "essentials/validation",
-        "essentials/variables"
-
+        "essentials/validation"
       ]
     },
     {
