@@ -3,19 +3,12 @@ title: "Introduction"
 description: "Automating ontop of ProcessZen"
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
-
 ## Authentication
 
 All API endpoints are authenticated using Bearer tokens and found in the [API Keys section](https://www.processzen.io/dashboard/settings/api) of the ProcessZen dashboard
 
 ```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+curl "https://processzen.com/api/endpoint" \
+  -H "Authorization: Bearer <API_KEY>"
+
 ```
