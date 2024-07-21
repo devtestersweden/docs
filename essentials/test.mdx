@@ -4,30 +4,28 @@ description: "Ensure data integrity with input validation"
 icon: "shield-check"
 ---
 
-## Conditional Logic in ProcessZen
+## Input Validation in ProcessZen
 
-Conditional logic allows you to create dynamic workflows by showing or hiding fields and pages based on specific conditions.
+Input validation helps maintain data integrity by ensuring that user inputs meet specific criteria before proceeding in the workflow.
 
-### Adding Condition Blocks
+### Adding Validation Rules
 
-To add a condition block:
+To add validation to an input field:
 
-- Click the `+` icon in the editor (when in editing mode)
-- Press `/` on your keyboard (shortcut: CMD+/ on macOS, CTRL+/ on Windows/Linux)
+- Click on the gear iconright next to the input field
 
-### Creating Condition Groups
+### Types of Validation
 
-Condition groups let you combine multiple conditions using AND/OR logic. Here's how to create them:
+1. Type Validation
 
-1. Add a condition block
-2. Select the field to evaluate
-3. Choose the condition type (e.g., equals, contains, greater than)
-4. Set the value to compare against
-5. Click "Add condition" to include more conditions in the group
+   - Email: Ensures the input is a valid email address
+   - Number: Allows only numeric input
+   - Date: Ensures the input is a valid date
 
-Example:
+2. Length Validation
 
-- IF (Email contains "@company.com" AND Role equals "Manager")
-  THEN show "Manager Approval" page
+   - Min length: Sets the minimum number of characters required
+   - Max length: Sets the maximum number of characters allowed
 
-By using condition groups, you can create complex logic to tailor your workflow to specific scenarios.
+3. Custom Validation
+   - Regex: Use custom regular expressions for specific validation needs
